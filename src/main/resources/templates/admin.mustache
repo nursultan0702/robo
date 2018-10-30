@@ -1,0 +1,23 @@
+<htm>
+    <head>
+        <title>
+            Admin panel
+        </title>
+    </head>
+    <b>
+    {{#notes}}
+            <div>{{date}}</div> </b>
+            <div>{{authorName}}</div></b>
+            <div>{{authorEmail}}</div></b>
+            <div>{{authorPhoneNumber}}</div></b>
+            <div>{{text}}</div></b>
+        <form action="/mark-done" method="post">
+            <input type="hidden" name="_csrf" value="{{_csrf.token}}">
+            <input type="text" value="{{id}}">
+            <input type="submit" value="Mark as read">
+        </form>
+        {{/notes}}
+
+
+    </body>
+</htm>
