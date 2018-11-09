@@ -13,6 +13,7 @@ public class Task {
     private Long id;
     private String taskName;
     private String fileName;
+    private String video;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "course_id")
     private Course course;

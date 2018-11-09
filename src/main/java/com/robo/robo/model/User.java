@@ -55,4 +55,10 @@ public class User implements UserDetails {
     public boolean isAdmin(){
         return roles.contains(Role.ADMIN);
     }
+    public boolean isStudent(){
+        return roles.contains(Role.STUDENT);
+    }
+    public boolean isTeacher(){
+        return roles.contains(Role.TEACHER);
+    }
 }

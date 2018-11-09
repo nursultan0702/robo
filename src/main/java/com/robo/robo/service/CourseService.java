@@ -1,7 +1,6 @@
 package com.robo.robo.service;
 
 import com.robo.robo.model.Course;
-import com.robo.robo.model.Task;
 import com.robo.robo.model.User;
 import com.robo.robo.repository.CourseRepository;
 import com.robo.robo.repository.TaskRepository;
@@ -21,8 +20,11 @@ public class CourseService {
     private TaskRepository taskRepository;
 
     public List<Course> getStudentCourses(User user) {
-//        TestCourse(user);
         return courseRepository.findByStudent(user);
+    }
+
+    public  List<Course> getAllCourses(){
+        return courseRepository.findAll();
     }
 //    public void TestCourse(User user){
 //        Course course = new Course();

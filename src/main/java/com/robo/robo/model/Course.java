@@ -12,6 +12,10 @@ public class Course {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
+    private String about;
+    private String img;
+    private Integer price;
+    private Integer hours;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "teacher_id")
     private User teacher;

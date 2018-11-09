@@ -1,8 +1,9 @@
 <#include "security.ftl">
 <nav id="nav-menu-container">
     <ul class="nav-menu">
-        <li class="menu-active"><a href="/">Home</a></li>
-        <li><a href="/course/my">My courses</a></li>
+        <li class="menu-active"><a href="/">Домой</a></li>
+        <li class="menu-active"><a href="/course">Курсы</a></li>
+        <li><a href="/course/my">Мои Курсы</a></li>
         <#if isAdmin>
         <li><a href="/user">Users</a></li>
     </#if>
