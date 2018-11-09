@@ -5,17 +5,16 @@ import lombok.Data;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "news")
+@Table(name = "task")
 @Data
-public class News {
+public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private String taskName;
+    private String fileName;
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "user_id")
-    private User author;
-    private String title;
-    private String text;
-    private String shortText;
-    private String imgName;
+    @JoinColumn(name = "course_id")
+    private Course course;
+
 }

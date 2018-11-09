@@ -21,15 +21,18 @@
     <!--
     CSS
     ============================================= -->
-    <link rel="stylesheet" href="static/css/linearicons.css">
-    <link rel="stylesheet" href="static/css/font-awesome.min.css">
-    <link rel="stylesheet" href="static/css/bootstrap.css">
-    <link rel="stylesheet" href="static/css/magnific-popup.css">
-    <link rel="stylesheet" href="static/css/nice-select.css">
-    <link rel="stylesheet" href="static/css/hexagons.min.css">
-    <link rel="stylesheet" href="static/css/animate.min.css">
-    <link rel="stylesheet" href="static/css/owl.carousel.css">
-    <link rel="stylesheet" href="static/css/main.css">
+    <link rel="stylesheet" href="/static/css/linearicons.css">
+    <link rel="stylesheet" href="/static/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/css/bootstrap.css">
+    <link rel="stylesheet" href="/static/css/magnific-popup.css">
+    <link rel="stylesheet" href="/static/css/nice-select.css">
+    <link rel="stylesheet" href="/static/css/hexagons.min.css">
+    <link rel="stylesheet" href="/static/css/animate.min.css">
+    <link rel="stylesheet" href="/static/css/owl.carousel.css">
+    <link rel="stylesheet" href="/static/css/main.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
 <header id="header" id="home">
@@ -38,65 +41,31 @@
             <div id="logo">
                 <a href="index.html"><img src="img/logo.png" alt="" title=""/></a>
             </div>
-            <nav id="nav-menu-container">
-                <ul class="nav-menu">
-                    <li class="menu-active"><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="services.html">Services</a></li>
-                    <li><a href="products.html">Products</a></li>
-                    <li class="menu-has-children"><a href="">Blog</a>
-                        <ul>
-                            <li><a href="blog-home.html">Blog Home</a></li>
-                            <li><a href="blog-single.html">Blog Single</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="contact.html">Contact</a></li>
-                    <li class="menu-has-children"><a href="">Dropdown</a>
-                        <ul>
-                            <li><a href="elements.html">Elements</a></li>
-                            <li><a href="product-details.html">Product Details</a></li>
-                            <li class="menu-has-children"><a href="">Level 2</a>
-                                <ul>
-                                    <li><a href="#">Item 1</a></li>
-                                    <li><a href="#">Item 2</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-                <form action="/logout" method="post">
-                    <input type="hidden" name="_csrf" value="${_csrf.token}">
-                    <div><input class="genric-btn primary" type="submit" value="Logout"/></div>
-
-                </form>
-            </nav><!-- #nav-menu-container -->
+            <#include "navbar.ftl">
         </div>
     </div>
 </header><!-- #header -->
 
 <!-- start banner Area -->
-<section class="banner-area" id="home">
-    <div class="container">
-        <div class="row fullscreen d-flex align-items-center justify-content-center">
-            <div class="banner-content col-lg-6 col-md-6">
-                <h1>
-                    Improved <br>
-                    Production level <br>
-                    with Robotics
-                </h1>
-                <p class="text-white text-uppercase">
-                    Everyone wants the innovation through robotics
-                </p>
-                <a href="#" class="primary-btn header-btn text-uppercase">View Details</a>
-            </div>
-            <div class="banner-img col-lg-6 col-md-6">
-                <img class="img-fluid" src="img/banner-img.png" alt="">
-            </div>
-        </div>
-    </div>
-</section>
 <!-- End banner Area -->
 <#nested>
+
+<script src="/static/js/vendor/jquery-2.2.4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="/static/js/vendor/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
+<script src="/static/js/easing.min.js"></script>
+<script src="/static/js/hoverIntent.js"></script>
+<script src="/static/js/superfish.min.js"></script>
+<script src="/static/js/jquery.ajaxchimp.min.js"></script>
+<script src="/static/js/jquery.magnific-popup.min.js"></script>
+<script src="/static/js/owl.carousel.min.js"></script>
+<script src="/static/js/hexagons.min.js"></script>
+<script src="/static/js/jquery.nice-select.min.js"></script>
+<script src="/static/js/jquery.counterup.min.js"></script>
+<script src="/static/js/waypoints.min.js"></script>
+<script src="/static/js/mail-script.js"></script>
+<script src="/static/js/main.js"></script>
 </body>
 </html>
 </#macro>

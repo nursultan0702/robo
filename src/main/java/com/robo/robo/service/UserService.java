@@ -1,5 +1,6 @@
 package com.robo.robo.service;
 
+import com.robo.robo.model.User;
 import com.robo.robo.repository.UserRepository;
 import org.hibernate.service.spi.InjectService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,10 @@ public class UserService implements UserDetailsService {
     private UserRepository userRepository;
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        return userRepository.findByUsername(username);
+    }
+
+    public User getByUsername(String username) {
         return userRepository.findByUsername(username);
     }
 }

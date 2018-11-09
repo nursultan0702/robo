@@ -1,6 +1,7 @@
 <#import "parts/common.ftl" as c>
 
 <@c.page>
+<#include "parts/mainbanner.ftl">
 <!-- Start home-about Area -->
 <section class="home-about-area">
     <div class="container-fluid">
