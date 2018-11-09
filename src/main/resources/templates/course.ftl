@@ -1,5 +1,6 @@
 <#import "parts/common.ftl" as c>
 <#import "parts/banner.ftl" as b>
+<#include "parts/security.ftl">
 
 <@c.page>
 <@b.banner "My courses"/>
@@ -20,11 +21,11 @@
                     ${course.about}
                 </p>
                 <#if isStudent>
-                <a class="primary-btn" href="/begin-course/${course.id}">Начать обучение</a>
+                <a class="primary-btn" href="/course/begin-course/${course.id}">Начать обучение</a>
                 <#elseif isTeacher || isAdmin >
-                <a class="primary-btn" href="/edit-course/${course.id}">Редактировать курс</a>
+                <a class="primary-btn" href="/course/edit-course/${course.id}">Редактировать курс</a>
                 <#else>
-                <a class="primary-btn" href="/login">Начать курс</a>
+                <a class="primary-btn" href="/course/login">Начать курс</a>
                  </#if>
 
     </div>

@@ -7,10 +7,10 @@ import com.robo.robo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.security.Principal;
 import java.util.*;
 
@@ -33,8 +33,15 @@ public class CourseController {
     @GetMapping("/my")
     public String myCourses(Principal principal, Model model){
         String username = principal.getName();
+        List<Course> courses = new ArrayList<>();
         User user = userService.getByUsername(username);
-        List<Course> courses = courseService.getStudentCourses(user);
+        if(user.getRoles().contains(Role.STUDENT)) {
+            courses = courseService.getStudentCourses(user);
+        }else if(user.getRoles().contains(Role.TEACHER)){
+            courses = courseService.getStudentCourses(user);
+        }else  if(user.getRoles().contains(Role.ADMIN)){
+            courses = courseService.getAllCourses();
+        }
         model.addAttribute("courses",courses);
         return "mycourses";
     }
@@ -42,5 +49,30 @@ public class CourseController {
     @GetMapping("/begin-course/{course}")
     public String addCourse(@PathVariable Course course, Principal principal){
         return "redirect:/course/my";
+    }
+    @GetMapping("/add-course")
+    public String addCoure(){
+        return "editcourse";
+    }
+
+    @GetMapping("/edit-course/{course}")
+    public String editCourse(@PathVariable Course course, Principal principal,Model model) throws IOException {
+        model.addAttribute("course",course);
+        return "editcourse";
+    }
+    @PostMapping("/save-course")
+    public String saveCourse(@RequestParam("name") String name,
+                             @RequestParam("about") String about,
+                             @RequestParam("price") Integer price,
+                             @RequestParam("hours") Integer hours,
+                             Principal principal,
+                             @RequestParam("img") MultipartFile img) throws IOException {
+        Course course = new Course();
+        course.setName(name);
+        course.setAbout(about);
+        course.setHours(hours);
+        course.setPrice(price);
+        courseService.saveCourse(img,principal,course);
+        return "redirect:/course";
     }
 }
