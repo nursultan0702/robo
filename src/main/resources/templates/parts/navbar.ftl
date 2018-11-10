@@ -2,8 +2,14 @@
 <nav id="nav-menu-container">
     <ul class="nav-menu">
         <li class="menu-active"><a href="/">Домой</a></li>
-        <li class="menu-active"><a href="/course">Курсы</a></li>
-        <li><a href="/course/my">Мои Курсы</a></li>
+        <li class="menu-has-children"><a href="/course">Курсы</a>
+            <ul>
+                <li><a href="/course/my">Мои Курсы</a></li>
+                <#if isTeacher || isAdmin>
+                <li><a href="/course/edit-course">Добавить новый курс</a></li>
+                </#if>
+            </ul>
+        </li>
         <#if isAdmin>
         <li><a href="/user">Users</a></li>
     </#if>

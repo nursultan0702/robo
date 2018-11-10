@@ -44,7 +44,7 @@ public class CourseService {
                 uploadDir.mkdir();
             }
             String uuidFile = UUID.randomUUID().toString();
-            String resultFileName = uuidFile + "." + file.getOriginalFilename();
+            String resultFileName = uuidFile + file.getOriginalFilename();
             file.transferTo(new File(path + "/" + resultFileName));
             course.setImg(resultFileName);
             if(user.getRoles().contains(Role.STUDENT)){
