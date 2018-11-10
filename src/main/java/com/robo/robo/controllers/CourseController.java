@@ -48,6 +48,7 @@ public class CourseController {
 
     @GetMapping("/begin-course/{course}")
     public String addCourse(@PathVariable Course course, Principal principal){
+        courseService.addToMy(course,principal);
         return "redirect:/course/my";
     }
     @GetMapping("/add-course")
@@ -59,6 +60,21 @@ public class CourseController {
     public String editCourse(@PathVariable Course course, Principal principal,Model model) throws IOException {
         model.addAttribute("course",course);
         return "editcourse";
+    }
+    @PostMapping("/update-course")
+    public String updateCourse(@RequestParam("name") String name,
+                             @RequestParam("about") String about,
+                             @RequestParam("price") Integer price,
+                             @RequestParam("hours") Integer hours,
+                             @RequestParam("id") Course course,
+                             Principal principal,
+                             @RequestParam("img") MultipartFile img) throws IOException {
+        course.setName(name);
+        course.setAbout(about);
+        course.setHours(hours);
+        course.setPrice(price);
+        courseService.saveCourse(img,principal,course);
+        return "redirect:/course";
     }
     @PostMapping("/save-course")
     public String saveCourse(@RequestParam("name") String name,
@@ -73,6 +89,12 @@ public class CourseController {
         course.setHours(hours);
         course.setPrice(price);
         courseService.saveCourse(img,principal,course);
+        return "redirect:/course";
+    }
+
+    @PostMapping("/delete/{course}")
+    public String deleteCourse(@PathVariable Course course){
+        courseService.deleteCourse(course);
         return "redirect:/course";
     }
 }

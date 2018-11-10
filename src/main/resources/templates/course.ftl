@@ -10,7 +10,7 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-6 about-video-left">
-                <h6 class="text-uppercase">Brand new app to blow your mind</h6>
+                <h6 class="text-uppercase">Автор курса ${course.teacher.getUsername()}</h6>
                 <h1>
                     ${course.name}
                 </h1>
@@ -29,7 +29,7 @@
                  </#if>
 
     </div>
-    <div class="col-lg-6 about-video-right justify-content-center align-items-center d-flex relative">
+    <div  style="background-image: url('${course.img}') no-repeat center; background-size: cover; height: 330px;" class="col-lg-6 justify-content-center align-items-center d-flex relative">
         <div class="overlay overlay-bg"></div>
         <img class="img-fluid mx-auto" src="${course.img}" alt="">
     </div>

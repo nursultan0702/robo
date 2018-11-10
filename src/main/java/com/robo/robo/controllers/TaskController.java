@@ -36,11 +36,17 @@ public class TaskController {
         return "task";
     }
 
-    @PostMapping
-    public String saveHomeTask(@RequestParam("file") MultipartFile file,
-                               @RequestParam("taskid") Long taskId,
-                               Principal principal) throws IOException {
-        taskService.saveHomeTask(taskId,principal,file);
-        return "redirect:/task";
+
+    @PostMapping("/add-task")
+    public String addTask(@RequestParam("id") Course course,
+                          @RequestParam("name") String taskName,
+                          @RequestParam("video") String video,
+                          @RequestParam("about") String about,
+                          @RequestParam("file") MultipartFile file,
+                          Principal principal
+
+    ) throws IOException {
+        taskService.addTask(course,taskName,video,about,file,principal);
+        return "redirect:/task/"+course.getId();
     }
 }

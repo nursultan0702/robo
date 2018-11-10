@@ -29,20 +29,25 @@ public class TaskService {
         return taskRepository.findByCourse(course);
     }
 
-    public void saveHomeTask(Long taskId,Principal principal, MultipartFile file) throws IOException {
+
+    public void addTask(Course course, String taskName, String video, String about, MultipartFile file, Principal principal) throws IOException {
+        Task task = new Task();
+        task.setTaskName(taskName);
+        task.setVideo(video);
+        task.setAbout(about);
+        task.setCourse(course);
         if(file != null){
             File uploadDir = new File(path);
-            User student = userRepository.findByUsername(principal.getName());
+            User user = userRepository.findByUsername(principal.getName());
             if(!uploadDir.exists() && !file.getOriginalFilename().isEmpty()) {
                 uploadDir.mkdir();
             }
             String  uuidFile = UUID.randomUUID().toString();
             String resultFileName = uuidFile + "." + file.getOriginalFilename();
             file.transferTo(new File(path + "/" + resultFileName));
-            Task task = taskRepository.getOne(taskId);
-            task.setFileName(resultFileName);
-            taskRepository.save(task);
+            task.setLectureFileName(resultFileName);
 
+        }
+        taskRepository.save(task);
     }
-}
 }

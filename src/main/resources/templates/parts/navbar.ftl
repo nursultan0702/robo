@@ -6,7 +6,7 @@
             <ul>
                 <li><a href="/course/my">Мои Курсы</a></li>
                 <#if isTeacher || isAdmin>
-                <li><a href="/course/edit-course">Добавить новый курс</a></li>
+                <li><a href="/course/add-course">Добавить новый курс</a></li>
                 </#if>
             </ul>
         </li>

@@ -36,6 +36,7 @@ public class CourseService {
     public List<Course> getTeacherCourses(User user) {
         return courseRepository.findByTeacher(user);
     }
+
     public void saveCourse(MultipartFile file, Principal principal, Course course) throws IOException {
         if (file != null) {
             File uploadDir = new File(path);
@@ -46,7 +47,7 @@ public class CourseService {
             String uuidFile = UUID.randomUUID().toString();
             String resultFileName = uuidFile + file.getOriginalFilename();
             file.transferTo(new File(path + "/" + resultFileName));
-            course.setImg(resultFileName);
+            course.setImg("/img/"+resultFileName);
             if(user.getRoles().contains(Role.STUDENT)){
                 course.setStudent(user);
             }else{
@@ -58,5 +59,19 @@ public class CourseService {
 
     public  List<Course> getAllCourses(){
         return courseRepository.findAll();
+    }
+
+    public void deleteCourse(Course course) {
+        List<Task> tasks = taskRepository.findByCourse(course);
+        for (Task task : tasks) {
+            taskRepository.delete(task);
+        }
+        courseRepository.delete(course);
+    }
+
+    public void addToMy(Course course, Principal principal) {
+        User student = userRepository.findByUsername(principal.getName());
+        course.setStudent(student);
+        courseRepository.save(course);
     }
 }

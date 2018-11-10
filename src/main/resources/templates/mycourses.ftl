@@ -20,7 +20,7 @@
                     <#assign count = count + 1>
                     <div class="table-row">
                         <div class="serial">${count}</div>
-                        <div class="country"> <img src="/static/img/${course.img}" alt="flag"><a href="/task/${course.id}">${course.name}</a></div>
+                        <div class="country"> <img height="30px" width="50" src="${course.img}" alt="flag"><a href="/task/${course.id}">${course.name}</a></div>
                         <div class="visit"><p>author:${course.teacher.username}</div>
                         <div class="percentage">
                             <div class="progress">

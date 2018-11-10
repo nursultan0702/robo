@@ -1,27 +1,82 @@
 <#import "parts/common.ftl" as c>
 <#import "parts/banner.ftl" as b>
+<#include "parts/security.ftl">
 
 <@c.page>
-<@b.banner "Задачи"/>
-<h1>${course.name}</h1>
-<#list tasks as task>
-<form action="/task" method="post" enctype="multipart/form-data">
-    <div class="mt-10">
-        <input type="text" name="hometaskName" value="${task.taskName}" placeholder="hometask name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'hometask name'" required class="single-input">
-        <input type="hidden" name="taskid" value="${task.id}">
-        <input type="hidden" name="course" value="${course.id}">
-    </div>
-    <#if task.filename??>
-    <div class="mt-10">
-        <a href="/#">${task.fileName}</a>
-    </div>
-    </#if>
-    <div class="mt-10">
-        <input type="file" name="file ">
-    </div>
-    <input type="hidden" name="_csrf" value="${_csrf.token}">
-    <div><input class="genric-btn primary" type="submit" value="Send"/></div>
+<@b.banner "Уроки"/>
+<div class="whole-wrap">
+    <div class="container">
+        <div class="section-top-border">
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <h3 class="mb-30">${course.name}</h3>
+                <#if isTeacher || isAdmin>
+                    <form action="/task/add-task" method="post" enctype="multipart/form-data">
+                        <input type="hidden" name="_csrf" value="${_csrf.token}">
+                        <input type="hidden" name="id" value="${course.id}">
 
-</form>
-</#list>
+                        <div class="mt-10">
+                            <label>Название:</label>
+                            <input type="text" name="name" class="single-input">
+                        </div>
+
+                        <div class="mt-10">
+                            <label>Ссылка на видео:</label>
+                            <input type="text" name="video" class="single-input">
+                        </div>
+
+                        <div class="mt-10">
+                            <label>Описание урока:</label>
+                            <textarea class="single-textarea" name="about"></textarea>
+                        </div>
+                        <div class="mt-10">
+                            <label>Максимальный размер файла 2Мб</label>
+                            <input class="mt-3" type="file" name="file " multiple length="2024">
+                        </div>
+                        <button class="mt-3 btn btn-success" type="submit">Save</button>
+                    </form>
+                    </#if>
+
+                    <#if tasks??>
+                    <#list tasks as task>
+                <form action="/task/update-task" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="_csrf" value="${_csrf.token}">
+                    <input type="hidden" name="id" value="${course.id}">
+
+                    <div class="mt-10">
+                        <label>Название:</label>
+                        <input type="text" name="name" value="${task.taskName} class="single-input">
+                    </div>
+
+                    <div class="mt-10">
+                        <label>Ссылка на видео: ${task.video}</label>
+                        <input type="text" name="video" value="${task.video}" class="single-input">
+                    </div>
+
+                    <div class="mt-10">
+                        <label>Описание урока:</label>
+                        <textarea class="single-textarea" name="about">${task.about}</textarea>
+                    </div>
+                    <div class="mt-10">
+                        <label>${task.lectureFileName}</label>
+                        <label>Максимальный размер файла 2Мб</label>
+                        <input class="mt-3" type="file" name="file " multiple length="2024">
+                    </div>
+                    <div class="mt-10">
+                        <label>Home Task</label>
+                        <#if task.hometaskFileName??>
+                        <a href="#">${task.hometaskFileName}</a>
+                        </#else>
+
+                        </#if>
+                    </div>
+                    <button class="mt-3 btn btn-success" type="submit">Save</button>
+                </form>
+                </#list>
+                </#if>
+
+            </div>
+        </div>
+    </div>
+</div>
 </@c.page>
