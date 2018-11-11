@@ -14,7 +14,6 @@ public class Task {
     private String taskName;
     private String about;
     private String lectureFileName;
-    private String hometaskFileName;
     private String video;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "course_id")

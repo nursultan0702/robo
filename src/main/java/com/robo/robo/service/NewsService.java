@@ -25,10 +25,11 @@ public class NewsService {
     @Value("${upload.image.path}")
     private String imgPath;
 
-    public void saveNews(String text, String title, MultipartFile image, Principal principal) throws IOException {
-        if(image != null){
+    public void saveNews(String shortText, String text, String title, MultipartFile image, Principal principal) throws IOException {
+        News news = new News();
+        User author = userService.getByUsername(principal.getName());
+        if(image != null && !image.getOriginalFilename().isEmpty()){
             File uploadDir = new File(imgPath);
-            User author = userService.getByUsername(principal.getName());
 
             if(!uploadDir.exists() && !image.getOriginalFilename().isEmpty()) {
                 uploadDir.mkdir();
@@ -37,14 +38,33 @@ public class NewsService {
             String  uuidFile = UUID.randomUUID().toString();
             String resultFileName = uuidFile + "." + image.getOriginalFilename();
             image.transferTo(new File(imgPath + "/" + resultFileName));
-            News news = new News();
-            news.setTitle(title);
-            news.setAuthor(author);
-            news.setImgName(resultFileName);
-            news.setText(text);
-            newsRepository.save(news);
-
+            news.setImgName("/img/" + resultFileName);
         }
+        news.setTitle(title);
+        news.setAuthor(author);
+        news.setText(text);
+        news.setShortText(shortText);
+        newsRepository.save(news);
+    }
+    public void updateNews( News news, String shortText, String text, String title, MultipartFile image, Principal principal) throws IOException {
+        User author = userService.getByUsername(principal.getName());
+        if(image != null && !image.getOriginalFilename().isEmpty()){
+            File uploadDir = new File(imgPath);
+
+            if(!uploadDir.exists() && !image.getOriginalFilename().isEmpty()) {
+                uploadDir.mkdir();
+            }
+
+            String  uuidFile = UUID.randomUUID().toString();
+            String resultFileName = uuidFile + "." + image.getOriginalFilename();
+            image.transferTo(new File(imgPath + "/" + resultFileName));
+            news.setImgName("/img/" + resultFileName);
+        }
+        news.setTitle(title);
+        news.setAuthor(author);
+        news.setText(text);
+        news.setShortText(shortText);
+        newsRepository.save(news);
     }
 
     public List<News> getNewsList() {

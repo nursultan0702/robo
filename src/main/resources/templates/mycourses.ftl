@@ -1,5 +1,6 @@
 <#import "parts/common.ftl" as c>
 <#import "parts/banner.ftl" as b>
+<#include "parts/security.ftl">
 
 <@c.page>
 <@b.banner "My courses"/>
@@ -20,7 +21,13 @@
                     <#assign count = count + 1>
                     <div class="table-row">
                         <div class="serial">${count}</div>
-                        <div class="country"> <img height="30px" width="50" src="${course.img}" alt="flag"><a href="/task/${course.id}">${course.name}</a></div>
+                        <div class="country"> <img height="30px" width="50" src="${course.img}" alt="flag">
+                            <#if isTeacher || isAdmin>
+                            <a href="/task/open/${course.id}">${course.name}</a>
+                            <#else>
+                            <a href="/task/open/${course.id}">${course.name}</a>
+                        </#if>
+                        </div>
                         <div class="visit"><p>author:${course.teacher.username}</div>
                         <div class="percentage">
                             <div class="progress">
