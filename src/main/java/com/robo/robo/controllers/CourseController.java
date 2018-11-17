@@ -30,15 +30,22 @@ public class CourseController {
         return "course";
     }
 
+    @GetMapping("/teachers/{id}")
+    public String teachersCourses(@PathVariable(value = "id",required = false) User teacher, Model model){
+       List<Course> courses = courseService.getTeacherCourses(teacher);
+        model.addAttribute("courses",courses);
+        return "course";
+    }
+
     @GetMapping("/my")
-    public String myCourses(Principal principal, Model model){
+    public String myCourses(@PathVariable(value = "id",required = false) User teacher, Principal principal, Model model){
         String username = principal.getName();
-        List<Course> courses = new ArrayList<>();
         User user = userService.getByUsername(username);
+        List<Course> courses = new ArrayList<>();
         if(user.getRoles().contains(Role.STUDENT)) {
             courses = courseService.getStudentCourses(user);
         }else if(user.getRoles().contains(Role.TEACHER)){
-            courses = courseService.getStudentCourses(user);
+            courses = courseService.getTeacherCourses(user);
         }else  if(user.getRoles().contains(Role.ADMIN)){
             courses = courseService.getAllCourses();
         }

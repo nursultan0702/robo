@@ -3,14 +3,14 @@
         <div class="row fullscreen d-flex align-items-center justify-content-center">
             <div class="banner-content col-lg-6 col-md-6">
                 <h1>
-                    Improved <br>
-                    Production level <br>
-                    with Robotics
+                    EDU</br>
+                    online
                 </h1>
                 <p class="text-white text-uppercase">
-                    Everyone wants the innovation through robotics
+                    <samp>
+                        онлайн школа программирования
+                    </samp>
                 </p>
-                <a href="#" class="primary-btn header-btn text-uppercase">View Details</a>
             </div>
             <div class="banner-img col-lg-6 col-md-6">
                 <img class="img-fluid" src="img/banner-img.png" alt="">

@@ -10,6 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -21,7 +22,12 @@ public class NewsController {
     @GetMapping
     public String news(Model model){
        List<News> newsList = newsService.getNewsList();
+       List<News> lNews = new ArrayList<>();
+       lNews.add(newsList.get(newsList.size()-1));
+       lNews.add(newsList.get(newsList.size()-2));
+       lNews.add(newsList.get(newsList.size()-3));
        model.addAttribute("newsList",newsList);
+       model.addAttribute("lNewsList",lNews);
         return "news";
     }
     @GetMapping("/edit-news/{news}")
@@ -32,6 +38,12 @@ public class NewsController {
 
     @GetMapping("/single-news/{news}")
     public String singleNews(@PathVariable News news,Model model){
+        List<News> newsList = newsService.getNewsList();
+        List<News> lNews = new ArrayList<>();
+        lNews.add(newsList.get(newsList.size()-1));
+        lNews.add(newsList.get(newsList.size()-2));
+        lNews.add(newsList.get(newsList.size()-3));
+        model.addAttribute("lNewsList",lNews);
         model.addAttribute("news",news);
         return "single-news";
     }

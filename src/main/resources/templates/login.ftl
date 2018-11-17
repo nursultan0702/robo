@@ -18,7 +18,6 @@
             <div><input class="genric-btn primary" type="submit" value="Sign In"/></div>
 
         </form>
-        <a class="genric-btn primary-border small" href="/registration">Registration</a>
     </div>
 </section>
 </@c.page>

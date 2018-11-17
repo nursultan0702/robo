@@ -7,7 +7,7 @@
                 <h1 class="text-white">
                     ${path}
                 </h1>
-                <p class="text-white link-nav"><a href="index.html">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="elements.html"> Elements</a></p>
+                <p class="text-white link-nav"><a href="index.html">Главная </a>  <span class="lnr lnr-arrow-right"></span>  <a href="elements.html">  ${path}</a></p>
             </div>
         </div>
     </div>
