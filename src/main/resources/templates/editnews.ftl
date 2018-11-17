@@ -30,7 +30,7 @@
                             <textarea class="single-textarea" name="text">${news.text}</textarea>
                         </div>
                         <div class="mt-10">
-                            <img src="${news.imgName}"> </br>
+                            <img height="330px" width="570px" src="${news.imgName}"> </br>
                             <label>Максимальный размер картинки 2Мб</label>
                             <input class="mt-3" type="file" name="image " multiple length="2024">
                         </div>

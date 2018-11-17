@@ -13,7 +13,7 @@
                     <h3 class="mb-30">Курс: ${course.name}</h3>
                     <#else>
                     <h3 class="mb-30">Результаты: </h3>
-                    </#if>
+                </#if>
                 <#if isTeacher || isAdmin && tasks??>
                 <#list tasks as task>
                 <h4>Называние урока: ${task.taskName}</h4>
@@ -31,6 +31,15 @@
                         <label>Ссылка на видео:</label>
                         <input type="text" name="video" value="${task.video}" class="single-input">
                     </div>
+                    <#if task.video??>
+                    <div class="mt-10">
+                        <label>Видео к уроку:</label>
+                        <div class="about-video-right justify-content-center align-items-center d-flex relative" style="background: url(${course.img}) no-repeat center;">
+                            <div class="overlay overlay-bg"></div>
+                            <a class="play-btn" href="${task.video}"><img class="img-fluid mx-auto" src="/img/play-btn.png" alt=""></a>
+                        </div>
+                    </div>
+                    </#if>
 
                     <div class="mt-10">
                         <label>Описание урока:</label>
@@ -38,8 +47,8 @@
                     </div>
                     <div class="mt-10">
                         <#if task.lectureFileName??>
-                        <label>${task.lectureFileName}</label>
-                        </#if>
+                        <a href="/download/file/${task.lectureFileName}">${task.lectureFileName}</a>
+                    </#if>
                     <label>Максимальный размер файла 2Мб</label>
                     <input class="mt-3" type="file" name="file " multiple length="2024">
             </div>
@@ -56,37 +65,39 @@
 
         <#elseif isStudent>
         <#list tasks as task>
-            <h4>Называние урока: ${task.taskName}</h4>
-                <div class="mt-10">
-                    <label>Название:</label>
-                    <input disabled type="text" name="name" value="${task.taskName}" class="single-input">
-                </div>
-
-                <div class="mt-10">
-                    <label>Ссылка на видео:</label>
-                    <input disabled type="text" name="video" value="${task.video}" class="single-input">
-                </div>
-
-                <div class="mt-10">
-                    <label>Описание урока:</label>
-                    <textarea disabled class="single-textarea" name="about">${task.about}</textarea>
-                </div>
-                <div class="mt-10">
-                    <#if task.lectureFileName??>
-                    <label>${task.lectureFileName}</label>
-                    </#if>
+        <h4>Называние урока: ${task.taskName}</h4>
+        <div class="mt-10">
+            <label>Название:</label>
+            <input disabled type="text" name="name" value="${task.taskName}" class="single-input">
         </div>
-        <a href="/hometask/add-hometask/${task.id}"><button class="mt-3 btn btn-success">Добавить ответ</button></a>
-        <#list hometasks as hometask>
-        <#if task == hometask.task>
-        <p>Оценка за урок:</p>  <label>${hometask.mark}</label>
+        <div class="mt-10">
+            <label>Видео к уроку:</label>
+            <div class="about-video-right justify-content-center align-items-center d-flex relative" style="background: url(${course.img}) no-repeat center;">
+                <div class="overlay overlay-bg"></div>
+                <a class="play-btn" href="${task.video}"><img class="img-fluid mx-auto" src="/img/play-btn.png" alt=""></a>
+            </div>
+        </div>
+
+        <div class="mt-10">
+            <label>Описание урока:</label>
+            <textarea disabled class="single-textarea" name="about">${task.about}</textarea>
+        </div>
+        <div class="mt-10">
+            <#if task.lectureFileName??>
+            <label>${task.lectureFileName}</label>
         </#if>
-        </#list>
-        <hr>
-    </#list>
-    <#else>
-    <h3>You don't have access to this page, ask your Administrator</h3>
-    </#if>
+    </div>
+    <a href="/hometask/add-hometask/${task.id}"><button class="mt-3 btn btn-success">Добавить ответ</button></a>
+    <#list hometasks as hometask>
+    <#if task == hometask.task>
+    <p>Оценка за урок:</p>  <label>${hometask.mark}</label>
+</#if>
+</#list>
+<hr>
+</#list>
+<#else>
+<h3>You don't have access to this page, ask your Administrator</h3>
+</#if>
 </div>
 <div class="col-lg-4 sidebar">
     <div class="single-widget search-widget">

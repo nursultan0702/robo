@@ -64,6 +64,7 @@
 <script src="/static/js/waypoints.min.js"></script>
 <script src="/static/js/mail-script.js"></script>
 <script src="/static/js/main.js"></script>
+<script src="/static/js/custom.js"></script>
 </body>
 </html>
 </#macro>

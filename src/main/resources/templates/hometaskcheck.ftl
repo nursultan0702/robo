@@ -27,7 +27,8 @@
 
                         <div class="mt-10">
                             <#if task.lectureFileName??>
-                            <label>${task.lectureFileName}</label>
+                            <label>Файл урока:</label>
+                            <a href="/download/file/${task.lectureFileName}">${task.lectureFileName}</a>
                         </#if>
                 </div>
                 <hr>
@@ -36,13 +37,14 @@
                 <form action="/hometask/save-hometask-mark" method="post">
                     <input type="hidden" name="_csrf" value="${_csrf.token}">
                     <input type="hidden" name="id" value="${hometask.id}">
+                    <h4>Ответ от: ${hometask.student.getFirstname()} ${hometask.student.getSecondname()}</h4>
                 <div class="mt-3">
                     <label>Ответ: </label>
                     <div class="mt-10">
                         <label>Комментарии:</label>
                         <textarea  class="single-textarea" name="comment">${hometask.comments}</textarea>
                     </div>
-                    <a href="#">${hometask.file}</a>
+                    <a href="/download/file/${hometask.file}">${hometask.file}</a>
                     <h3>ОЦЕНКА:</h3>
                     <div class="mt-10">
                         <input type="text" name="mark" value="${hometask.mark}" class="single-input">

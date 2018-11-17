@@ -30,6 +30,12 @@ public class NewsController {
         return "editnews";
     }
 
+    @GetMapping("/single-news/{news}")
+    public String singleNews(@PathVariable News news,Model model){
+        model.addAttribute("news",news);
+        return "single-news";
+    }
+
     @GetMapping("/add-news")
     public String addNews(){
         return "editnews";
@@ -57,6 +63,16 @@ public class NewsController {
     ) throws IOException {
         newsService.updateNews(news,text,shortText,title,image,principal);
         return "redirect:/news";
+    }
+    @PostMapping("/delete/{news}")
+    public String deleteNews(@PathVariable News news){
+        newsService.delete(news);
+        return "redirect:/news";
+    }
+
+    @GetMapping("/like/{news}")
+    public void likeNews(@PathVariable News news){
+        newsService.addLike(news);
     }
 
 }

@@ -12,11 +12,9 @@
             <div class="single-post">
                 <img class="img-fluid" src="${news.imgName}" alt="">
                 <ul class="tags">
-                    <li><a href="#">Art, </a></li>
-                    <li><a href="#">Technology, </a></li>
-                    <li><a href="#">Fashion</a></li>
+                    <li><a href="#"><span class="lnr lnr-clock"></span> ${news.date}</a></li>
                 </ul>
-                <a href="blog-single.html">
+                <a href="/news/single-news/${news.id}">
                     <h1>
                         ${news.title}
                     </h1>
@@ -28,10 +26,10 @@
                     <div class="user-details row align-items-center">
                         <div class="comment-wrap col-lg-6">
                             <ul>
-                                <li><a href="#"><span class="lnr lnr-heart"></span>	4 likes</a></li>
-                                <li><a href="#"><span class="lnr lnr-bubble"></span> 06 Comments</a></li>
+                                <li><a onclick="like(${news.id})" href="#"><span class="lnr lnr-heart"></span>	${news.likes} likes</a></li>
+                                <li><a href="#"><span class="lnr lnr-user"></span> ${news.author.getUsername()}</a></li>
                                 <#if isAdmin>
-                                <li><a href="/news/edit-news/${news.id}"><span class="glyphicon glyphicon-pencil"></span> Изменить</a></li>
+                                <li><a href="/news/edit-news/${news.id}"><span class="lnr lnr-pencil"></span> Изменить</a></li>
                                 </#if>
                             </ul>
                         </div>
@@ -39,8 +37,7 @@
                             <ul>
                                 <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                                 <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                                <li><a href="#"><i class="fa fa-behance"></i></a></li>
+                                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
                             </ul>
 
                         </div>

@@ -3,6 +3,7 @@ package com.robo.robo.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "news")
@@ -18,4 +19,6 @@ public class News {
     private String text;
     private String shortText;
     private String imgName;
+    private String date;
+    private Integer likes;
 }
