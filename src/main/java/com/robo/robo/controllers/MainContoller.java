@@ -46,4 +46,9 @@ public class MainContoller {
     public String about(){
         return "main";
     }
+
+    @GetMapping("/game")
+    public String game(){
+        return "game";
+    }
 }
