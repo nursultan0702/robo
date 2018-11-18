@@ -19,6 +19,7 @@
     </#if>
     <li><a href="/news">Новости</a></li>
     <li><a href="/about">О нас</a></li>
+    <li><a href="/game">Игра</a></li>
     <#if known>
     <li>
         <div class="dropdown">
