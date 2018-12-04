@@ -47,7 +47,7 @@
                 <p>
                 ${news.text}
                 </p>
-                <a class="primary-btn text-uppercase" href="#">Посмотреть Новости</a>
+                <a class="primary-btn text-uppercase" href="/news">Посмотреть Новости</a>
             </div>
         </div>
     </div>

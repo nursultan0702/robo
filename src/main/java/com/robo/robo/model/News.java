@@ -16,7 +16,9 @@ public class News {
     @JoinColumn(name = "user_id")
     private User author;
     private String title;
+    @Column(length = 1000)
     private String text;
+    @Column(length = 500)
     private String shortText;
     private String imgName;
     private String date;

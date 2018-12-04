@@ -3,6 +3,7 @@ package com.robo.robo.controllers;
 import com.robo.robo.model.Role;
 import com.robo.robo.model.User;
 import com.robo.robo.repository.UserRepository;
+import com.robo.robo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -15,10 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.io.IOException;
 import java.security.Principal;
-import java.util.Arrays;
-import java.util.Map;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Controller
@@ -26,13 +24,21 @@ import java.util.stream.Collectors;
 public class UserController {
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private UserService userService;
     @Value("${upload.image.path}")
     private String path;
 
     @PreAuthorize("hasAuthority('ADMIN') ")
     @GetMapping
     public String userList(Model model){
-        model.addAttribute("users",userRepository.findAll());
+        List<User> users = userRepository.findAll();
+        List<User> activeUsers = new ArrayList<>();
+        for (User user: users) {
+            if(user.isActive())
+                activeUsers.add(user);
+        }
+        model.addAttribute("users",activeUsers);
         return "userList";
     }
 
@@ -101,6 +107,12 @@ public class UserController {
         }
         userRepository.save(user);
         return "redirect:/user/profile";
+    }
+
+    @GetMapping("/delete/{user}")
+    public String deleteUser(@PathVariable User user){
+        userService.delete(user);
+        return "redirect:/user";
     }
 
 

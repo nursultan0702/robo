@@ -34,11 +34,11 @@
                             <label>Максимальный размер картинки 2Мб</label>
                             <input class="mt-3" type="file" name="image " multiple length="2024">
                         </div>
-                        <button class="mt-3 btn btn-success" type="submit">Save</button>
+                        <button class="mt-3 btn btn-success" type="submit">Сохранить</button>
                     </form>
                     <form class="mt-3" action="/news/delete/${news.id}" method="post">
                         <input type="hidden" name="_csrf" value="${_csrf.token}">
-                        <button type="submit" class="btn btn-danger">Delete course</button>
+                        <button type="submit" class="btn btn-danger">Удалить пост</button>
                     </form>
                     <#else>
                     <form action="/news/save" method="post" enctype="multipart/form-data">
@@ -63,7 +63,7 @@
                             <label>Максимальный размер картинки 2Мб</label>
                             <input class="mt-3" type="file" name="image " multiple length="2024">
                         </div>
-                        <button class="mt-3 btn btn-success" type="submit">Save</button>
+                        <button class="mt-3 btn btn-success" type="submit">Сохранить</button>
                     </form>
                 </#if>
             </div>

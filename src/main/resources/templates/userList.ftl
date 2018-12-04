@@ -3,9 +3,9 @@
 
 <@c.page>
 <@b.banner "Список пользователей"/>
-List of Users
-
-<table class="table">
+<section class="sample-text-area">
+    <div class="container">
+<table class="table table-light">
     <thead class="thead-light">
     <tr>
         <th scope="col">#</th>
@@ -20,9 +20,14 @@ List of Users
         <th scope="row">${user.id}</th>
         <td>${user.username}</td>
         <td><#list user.roles as role>${role}<#sep>, </#list></td>
-        <td><a href="/user/${user.id}">Edit</a></td>
+        <td>
+            <a href="/user/${user.id}">Edit</a><span> </span>
+            <a href="/user/delete/${user.id}">Delete</a>
+        </td>
     </tr>
     </#list>
     </tbody>
 </table>
+    </div>
+</section>
 </@c.page>

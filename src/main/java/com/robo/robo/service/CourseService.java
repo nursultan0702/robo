@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.io.IOException;
 import java.security.Principal;
+import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 
@@ -30,7 +31,7 @@ public class CourseService {
     private String path;
 
     public List<Course> getStudentCourses(User user) {
-        return courseRepository.findByStudent(user);
+        return courseRepository.findByStudents(Collections.singletonList(user));
     }
 
     public List<Course> getTeacherCourses(User user) {
@@ -45,11 +46,13 @@ public class CourseService {
                 uploadDir.mkdir();
             }
             String uuidFile = UUID.randomUUID().toString();
+            List<User> students = course.getStudents();
             String resultFileName = uuidFile + file.getOriginalFilename();
             file.transferTo(new File(path + "/" + resultFileName));
             course.setImg("/img/"+resultFileName);
             if(user.getRoles().contains(Role.STUDENT)){
-                course.setStudent(user);
+                students.add(user);
+                course.setStudents(students);
             }else{
                 course.setTeacher(user);
             }
@@ -71,7 +74,9 @@ public class CourseService {
 
     public void addToMy(Course course, Principal principal) {
         User student = userRepository.findByUsername(principal.getName());
-        course.setStudent(student);
+        List<User> students = course.getStudents();
+        students.add(student);
+        course.setStudents(students);
         courseRepository.save(course);
     }
 }

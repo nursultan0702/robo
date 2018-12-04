@@ -22,7 +22,7 @@
             </div>
             <div class="mt-10">
                 <label>Специальность(Только для учителей)</label>
-                <input type="text" autocomplete="off" name="profession" value=""  required class="single-input">
+                <input type="text" autocomplete="off" name="profession" value=""   class="single-input">
             </div>
             <div class="mt-10">
                 <input type="password" autocomplete="off" name="password" placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'" required class="single-input">

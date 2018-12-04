@@ -6,7 +6,7 @@
 <!-- Start Sample Area -->
 <section class="sample-text-area">
     <div class="container">
-        <h3 class="text-heading">Text Sample</h3>
+        <h3 class="text-heading">Вход в систему</h3>
         <form action="/login" method="post">
             <div class="mt-10">
                 <input type="email" name="username" placeholder="Email address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email address'" required class="single-input">

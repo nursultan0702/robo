@@ -7,18 +7,18 @@ var fg = new Image();
 var pipeUp = new Image();
 var pipeBottom = new Image();
 
-bird.src = "img/bird.png";
-bg.src = "img/bg.png";
-fg.src = "img/fg.png";
-pipeUp.src = "img/pipeUp.png";
-pipeBottom.src = "img/pipeBottom.png";
+bird.src = "/static/img/bird.png";
+bg.src = "/static/img/bg.png";
+fg.src = "/static/img/fg.png";
+pipeUp.src = "/static/img/pipeUp.png";
+pipeBottom.src = "/static/img/pipeBottom.png";
 
 // Звуковые файлы
 var fly = new Audio();
 var score_audio = new Audio();
 
-fly.src = "audio/fly.mp3";
-score_audio.src = "audio/score.mp3";
+fly.src = "/static/audio/fly.mp3";
+score_audio.src = "/static/audio/score.mp3";
 
 var gap = 120;
 

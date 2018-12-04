@@ -3,7 +3,7 @@
 <#include "parts/security.ftl">
 
 <@c.page>
-<@b.banner "My courses"/>
+<@b.banner "Мои курсы"/>
 <#assign count = 0>
 <div class="whole-wrap">
     <div class="container">
@@ -13,9 +13,9 @@
                 <div class="progress-table">
                     <div class="table-head">
                         <div class="serial">#</div>
-                        <div class="country">Course name</div>
-                        <div class="visit">Author</div>
-                        <div class="percentage">Percentages</div>
+                        <div class="country">Название курса</div>
+                        <div class="visit">Автор</div>
+                        <div class="percentage">Продолжительность</div>
                     </div>
                     <#list courses as course>
                     <#assign count = count + 1>
@@ -28,7 +28,7 @@
                             <a href="/task/open/${course.id}">${course.name}</a>
                         </#if>
                         </div>
-                        <div class="visit"><p>author:${course.teacher.username}</div>
+                        <div class="visit"><p>${course.teacher.username}</div>
                         <div class="percentage">
                             <div class="progress">
                                 <div class="progress-bar color-1" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>

@@ -10,7 +10,7 @@
             <#if newsList??>
             <#list newsList as news>
             <div class="single-post">
-                <img class="img-fluid" src="${news.imgName}" alt="">
+                <img class="" height="320px" width="555px" src="${news.imgName}" alt="">
                 <ul class="tags">
                     <li><a href="#"><span class="lnr lnr-clock"></span> ${news.date}</a></li>
                 </ul>
@@ -20,7 +20,7 @@
                     </h1>
                 </a>
                 <p>
-                    ${news.text}
+                    ${news.shortText}
                 </p>
                 <div class="bottom-meta">
                     <div class="user-details row align-items-center">
