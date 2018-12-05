@@ -32,7 +32,7 @@
 
                         <div class="mt-10">
                             <#if task.lectureFileName??>
-                            <label>${task.lectureFileName}</label>
+                            <label><a href="/download/file/${task.lectureFileName}">${task.lectureFileName}</a></label>
                         </#if>
                         </div>
                 <hr>
