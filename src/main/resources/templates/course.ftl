@@ -3,7 +3,7 @@
 <#include "parts/security.ftl">
 
 <@c.page>
-<@b.banner "My courses"/>
+<@b.banner "Курсы"/>
 <#list courses as course>
 <!-- Start about-video Area -->
 <section class="about-video-area section-gap">

@@ -36,7 +36,7 @@
                         <label>Видео к уроку:</label>
                         <div class="about-video-right justify-content-center align-items-center d-flex relative" style="background: url(${course.img}) no-repeat center;">
                             <div class="overlay overlay-bg"></div>
-                            <a class="play-btn" href="${task.video}"><img class="img-fluid mx-auto" src="/img/play-btn.png" alt=""></a>
+                            <a class="play-btn" href="${task.video}"><img class="img-fluid mx-auto" src="/static/img/play-btn.png" alt=""></a>
                         </div>
                     </div>
                     </#if>
@@ -74,7 +74,7 @@
             <label>Видео к уроку:</label>
             <div class="about-video-right justify-content-center align-items-center d-flex relative" style="background: url(${course.img}) no-repeat center;">
                 <div class="overlay overlay-bg"></div>
-                <a class="play-btn" href="${task.video}"><img class="img-fluid mx-auto" src="/img/play-btn.png" alt=""></a>
+                <a class="play-btn" href="${task.video}"><img class="img-fluid mx-auto" src="/static/img/play-btn.png" alt=""></a>
             </div>
         </div>
 
