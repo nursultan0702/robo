@@ -8,7 +8,7 @@
         <div class="section-top-border">
             <div class="row">
                 <div class="col-lg-12 col-md-12">
-                    <h3 class="mb-30">Form Element</h3>
+                    <h3 class="mb-30">Курс</h3>
                     <#if course??>
                     <form action="/course/update-course" method="post" enctype="multipart/form-data">
                         <input type="hidden" name="_csrf" value="${_csrf.token}">

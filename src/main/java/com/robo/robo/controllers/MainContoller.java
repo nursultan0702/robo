@@ -25,21 +25,25 @@ public class MainContoller {
     private NewsService newsService;
     @GetMapping("/")
     public String index(Model model){
-        List<Course> courses = courseService.getAllCourses();
-        List<Course> lastCourses = new ArrayList<>();
-        lastCourses.add(courses.get(courses.size()-1));
-        lastCourses.add(courses.get(courses.size()-2));
-        lastCourses.add(courses.get(courses.size()-3));
-        lastCourses.add(courses.get(courses.size()-4));
+        if(courseService.getAllCourses().size()>3) {
+            List<Course> courses = courseService.getAllCourses();
+            List<Course> lastCourses = new ArrayList<>();
+            lastCourses.add(courses.get(courses.size() - 1));
+            lastCourses.add(courses.get(courses.size() - 2));
+            lastCourses.add(courses.get(courses.size() - 3));
+            lastCourses.add(courses.get(courses.size() - 4));
+            model.addAttribute("courses", lastCourses);
 
-        List<News> news = newsService.getNewsList();
-        List<News> lastNews = new ArrayList<>();
-        lastNews.add(news.get(news.size()-1));
-        lastNews.add(news.get(news.size()-2));
-        model.addAttribute("courses",lastCourses);
-        model.addAttribute("news",news.get(news.size()-1));
-        model.addAttribute("lastNews",lastNews);
-        return "index";
+        }
+        if(newsService.getNewsList().size()>3) {
+            List<News> news = newsService.getNewsList();
+            List<News> lastNews = new ArrayList<>();
+            lastNews.add(news.get(news.size() - 1));
+            lastNews.add(news.get(news.size() - 2));
+            model.addAttribute("news", news.get(news.size() - 1));
+            model.addAttribute("lastNews", lastNews);
+        }
+            return "index";
     }
 
     @GetMapping("/main")

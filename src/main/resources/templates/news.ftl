@@ -59,6 +59,7 @@
 
 <div class="single-widget recent-posts-widget">
     <h4 class="title">Последние новости</h4>
+    <#if lNewsList??>
     <#list lNewsList as news>
     <div class="blog-list ">
         <div class="single-recent-post d-flex flex-row">
@@ -78,6 +79,7 @@
         </div>
     </div>
     </#list>
+</#if>
 </div>
 </div>
 </div>

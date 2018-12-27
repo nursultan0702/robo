@@ -11,9 +11,11 @@
         <div class="row align-items-center">
             <div class="col-lg-6 about-video-left">
                 <h6 class="text-uppercase">Автор курса ${course.teacher.getUsername()}</h6>
+                <a href="/task/open/${course.id}">
                 <h1>
                     ${course.name}
                 </h1>
+                </a>
                 <p>
                     <span>Цена: ${course.price}, Часы: ${course.hours}</span>
                 </p>

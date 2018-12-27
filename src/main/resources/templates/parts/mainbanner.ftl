@@ -13,7 +13,7 @@
                 </p>
             </div>
             <div class="banner-img col-lg-6 col-md-6">
-                <img class="img-fluid" src="img/banner-img.png" alt="">
+                <img class="img-fluid" src="static/img/banner-img.png" alt="">
             </div>
         </div>
     </div>

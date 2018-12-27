@@ -7,13 +7,14 @@
     <div class="container">
         <div class="row d-flex justify-content-center">
             <div class="col-md-12 pb-40 header-text text-center">
-                <h1 class="pb-10">Featured Robotics Products to Show</h1>
+                <h1 class="pb-10">Доступные курсы</h1>
                 <p>
-                    Who are in extremely love with eco friendly system.
+                    Выберите ваш путь.
                 </p>
             </div>
         </div>
         <div class="row">
+            <#if courses??>
             <#list courses as course>
             <div class="col-lg-3 col-md-6">
                 <div class="single-product">
@@ -30,6 +31,7 @@
                 </div>
             </div>
             </#list>
+        </#if>
         </div>
     </div>
 </section>
@@ -39,6 +41,7 @@
 <section class="about-video-area section-gap">
     <div class="container">
         <div class="row align-items-center">
+            <#if news??>
             <div class="col-lg-6 about-video-left">
                 <img class="mx-auto d-block img-fluid" src="${news.imgName}" alt="">
             </div>
@@ -50,6 +53,7 @@
                 <a class="primary-btn text-uppercase" href="/news">Посмотреть Новости</a>
             </div>
         </div>
+    </#if>
     </div>
 </section>
 <!-- End home-about Area -->
@@ -71,7 +75,7 @@
             </div>
             <div class="col-lg-6 about-video-right justify-content-center align-items-center d-flex relative">
                 <div class="overlay overlay-bg"></div>
-                <a class="play-btn" href="https://www.youtube.com/watch?v=ml1jT5QomKY"><img class="img-fluid mx-auto" src="img/play-btn.png" alt=""></a>
+                <a class="play-btn" href="https://www.youtube.com/watch?v=ml1jT5QomKY"><img class="img-fluid mx-auto" src="/static/img/play-btn.png" alt=""></a>
             </div>
         </div>
     </div>
@@ -95,10 +99,10 @@
                 <div class="single-feature">
                     <a href="#" class="title d-flex flex-row">
                         <span class="lnr lnr-user"></span>
-                        <h4>Expert Technicians</h4>
+                        <h4>Мы эксперты</h4>
                     </a>
                     <p>
-                        Usage of the Internet is becoming more common due to rapid advancement of technology and power.
+                        Мы эксперты своего дело.
                     </p>
                 </div>
             </div>
@@ -106,10 +110,10 @@
                 <div class="single-feature">
                     <a href="#" class="title d-flex flex-row">
                         <span class="lnr lnr-license"></span>
-                        <h4>Professional Service</h4>
+                        <h4>Профессионалы</h4>
                     </a>
                     <p>
-                        Usage of the Internet is becoming more common due to rapid advancement of technology and power.
+                        У нас работают лучшие учители города.
                     </p>
                 </div>
             </div>
@@ -117,10 +121,10 @@
                 <div class="single-feature">
                     <a href="#" class="title d-flex flex-row">
                         <span class="lnr lnr-phone"></span>
-                        <h4>Great Support</h4>
+                        <h4>Поддержка</h4>
                     </a>
                     <p>
-                        Usage of the Internet is becoming more common due to rapid advancement of technology and power.
+                        Круглосуточная поддержка.
                     </p>
                 </div>
             </div>
@@ -128,10 +132,10 @@
                 <div class="single-feature">
                     <a href="#" class="title d-flex flex-row">
                         <span class="lnr lnr-rocket"></span>
-                        <h4>Technical Skills</h4>
+                        <h4>Передовые технологии</h4>
                     </a>
                     <p>
-                        Usage of the Internet is becoming more common due to rapid advancement of technology and power.
+                        Мы активно следим прогрессом в мире IT.
                     </p>
                 </div>
             </div>
@@ -139,10 +143,10 @@
                 <div class="single-feature">
                     <a href="#" class="title d-flex flex-row">
                         <span class="lnr lnr-diamond"></span>
-                        <h4>Highly Recomended</h4>
+                        <h4>Современные знание</h4>
                     </a>
                     <p>
-                        Usage of the Internet is becoming more common due to rapid advancement of technology and power.
+                        У нас только востребованные технологии.
                     </p>
                 </div>
             </div>
@@ -150,10 +154,10 @@
                 <div class="single-feature">
                     <a href="#" class="title d-flex flex-row">
                         <span class="lnr lnr-bubble"></span>
-                        <h4>Positive Reviews</h4>
+                        <h4>Позитивные отзывы</h4>
                     </a>
                     <p>
-                        Usage of the Internet is becoming more common due to rapid advancement of technology and power.
+                        О нас пишут только позитивные отзывы.
                     </p>
                 </div>
             </div>
@@ -169,19 +173,19 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="col single-brand">
-                <img class="img-fluid" src="/img/l1.png" alt="">
+                <img class="img-fluid" src="/static/img/l1.png" alt="">
             </div>
             <div class="col single-brand">
-                <img class="img-fluid" src="/img/l2.png" alt="">
+                <img class="img-fluid" src="/static/img/l2.png" alt="">
             </div>
             <div class="col single-brand">
-                <img class="img-fluid" src="/img/l3.png" alt="">
+                <img class="img-fluid" src="/static/img/l3.png" alt="">
             </div>
             <div class="col single-brand">
-                <img class="img-fluid" src="/img/l4.png" alt="">
+                <img class="img-fluid" src="/static/img/l4.png" alt="">
             </div>
             <div class="col single-brand">
-                <img class="img-fluid" src="/img/l5.png" alt="">
+                <img class="img-fluid" src="/static/img/l5.png" alt="">
             </div>
         </div>
     </div>
@@ -194,17 +198,18 @@
     <div class="container">
         <div class="row d-flex justify-content-center">
             <div class="col-md-12 pb-40 header-text text-center">
-                <h1 class="pb-10">Latest News from our Blog</h1>
+                <h1 class="pb-10">Последние новости</h1>
                 <p>
-                    Who are in extremely love with eco friendly system.
+                    Последние новости
                 </p>
             </div>
         </div>
         <div class="row">
+            <#if lastNews??>
             <#list lastNews as news>
             <div class="col-lg-6 col-md-6 blog-left">
                 <div class="thumb">
-                    <img class="img-fluid" src="${news.imgName}" alt="">
+                    <img class="" height="252" width="540" src="${news.imgName}" alt="">
                 </div>
                 <div class="detais">
                     <ul class="tags">
@@ -218,6 +223,7 @@
                 </div>
             </div>
             </#list>
+        </#if>
         </div>
     </div>
 </section>

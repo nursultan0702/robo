@@ -21,13 +21,15 @@ public class NewsController {
 
     @GetMapping
     public String news(Model model){
-       List<News> newsList = newsService.getNewsList();
-       List<News> lNews = new ArrayList<>();
-       lNews.add(newsList.get(newsList.size()-1));
-       lNews.add(newsList.get(newsList.size()-2));
-       lNews.add(newsList.get(newsList.size()-3));
-       model.addAttribute("newsList",newsList);
-       model.addAttribute("lNewsList",lNews);
+        if(newsService.getNewsList().size()>=3) {
+            List<News> newsList = newsService.getNewsList();
+            List<News> lNews = new ArrayList<>();
+            lNews.add(newsList.get(newsList.size() - 1));
+            lNews.add(newsList.get(newsList.size() - 2));
+            lNews.add(newsList.get(newsList.size() - 3));
+            model.addAttribute("newsList", newsList);
+            model.addAttribute("lNewsList", lNews);
+        }
         return "news";
     }
     @GetMapping("/edit-news/{news}")
@@ -39,11 +41,13 @@ public class NewsController {
     @GetMapping("/single-news/{news}")
     public String singleNews(@PathVariable News news,Model model){
         List<News> newsList = newsService.getNewsList();
-        List<News> lNews = new ArrayList<>();
-        lNews.add(newsList.get(newsList.size()-1));
-        lNews.add(newsList.get(newsList.size()-2));
-        lNews.add(newsList.get(newsList.size()-3));
-        model.addAttribute("lNewsList",lNews);
+        if(newsService.getNewsList().size()>=3) {
+            List<News> lNews = new ArrayList<>();
+            lNews.add(newsList.get(newsList.size() - 1));
+            lNews.add(newsList.get(newsList.size() - 2));
+            lNews.add(newsList.get(newsList.size() - 3));
+            model.addAttribute("lNewsList", lNews);
+        }
         model.addAttribute("news",news);
         return "single-news";
     }
